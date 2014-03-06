@@ -1,0 +1,48 @@
+README - Android light switch
+=============================
+Author: Gideon Tsang
+e-mail: gideont@gmail.com
+Date: March 6, 3013
+
+
+Introduction
+============
+
+The aim of the project is to use some kind of clients(e.g. Android) to 
+control some kind of home appliance(e.g. Light bulbs). For hardware
+setup, a raspberryPi(connected with a USB Wifi and a relay switch) is 
+connected to a light switch on the socket.  There is a server running
+in the raspberryPi, listening to some commands sending through udp 
+packets.  The Android app contains a simple UI create a client to send
+udp command depends on the button click.  
+
+
+GPIO UDP SERVER
+===============
+
+gpio_udp_server.c will be compiled on the raspberryPi.  Add the following
+lines to the wiringPi Makefile in directory example, then issue command
+$ make gio_udp_server
+
+Make commands in the Makefile:
+---------------------------------------------------------------
+gpio_udp_server: gpio_udp_server.o
+        @echo [link]
+        @$(CC) -o $@ gpio_udp_server.o $(LDFLAGS) $(LDLIBS)
+---------------------------------------------------------------
+
+
+
+GPIO UDP CLIENT
+===============
+
+The client file can be compiled in Linux PC to send command to control
+the lights to turn on/off/toggle. Just an alternative way of control or
+test.
+
+
+Android app source code
+=======================
+
+Details to build and put files in the right location will have to follow
+documentations provided by Android.
